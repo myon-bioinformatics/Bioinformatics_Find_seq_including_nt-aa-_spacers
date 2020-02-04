@@ -89,8 +89,9 @@
             d=d+1
                
 
-   def Input_find(self,sequence):
+   def Input_find(self,sequence,N_count):
        self.sequence=sequence
+       self.N_count=N_count
        from input_data_storage_file import Data_Storage
        input_name=Data_Storage.input_name
        input_element=Data_Storage.input_element
@@ -106,9 +107,11 @@
        from openpyxl import Workbook
        wb1=openpyxl.load_workbook(cordence_result_xlsx)
        wb2=openpyxl.load_workbook(discordence_result_xlsx)
-
+       
+       from tqdm import tqdm
+       
        v=0
-       for v in range(len(input_name)):
+       for v in tqdm(range(len(input_name))):
           import re
           print("\n")
           print("in "+input_element[v][0]+" turn for "+input_name[v])
@@ -135,8 +138,8 @@
              v=v+1 
           for m in iterator_front:
              a=m.group()
-             b=m.start()  
-             c=m.end()    
+             b=m.start()+self.N_count
+             c=m.end()+self.N_count    
              print(a,b,c)
              if sequence[c+snw:c+snw+lee]==input_element[v][1]:  
                 print("cordence sequence exists")     
@@ -157,11 +160,11 @@
                 else:
                    continue                                                     
              elif sequence[c+snw:c+snw+lee]!=input_element[v][1]:
-                sheet2.cell(row=j, column=1,value=sequence[b:c])
-                sheet2.cell(row=j, column=2,value=sequence[c:c+snw])
-                sheet2.cell(row=j, column=3,value=sequence[c+snw:c+snw+lee])
-                sheet2.cell(row=j, column=4,value=str(b)+":"+str(c+snw+lee))
-                sheet2.cell(row=j, column=5,value=sequence.count(sequence[b:c+snw+lee]))
+                #sheet2.cell(row=j, column=1,value=sequence[b:c])
+                #sheet2.cell(row=j, column=2,value=sequence[c:c+snw])
+                #sheet2.cell(row=j, column=3,value=sequence[c+snw:c+snw+lee])
+                #sheet2.cell(row=j, column=4,value=str(b)+":"+str(c+snw+lee))
+                #sheet2.cell(row=j, column=5,value=sequence.count(sequence[b:c+snw+lee]))
                 j=j+1
                 try: 
                    pass
@@ -192,7 +195,7 @@
 
          
        w=0
-       for w in range(len(input_name)):
+       for w in tqdm(range(len(input_name))):
           import re
           print("\n")
           print("in "+input_element[w][1]+" turn for "+input_name[w])
@@ -227,7 +230,7 @@
                 sheet1.cell(row=p, column=6, value=sequence[f-snw-lee:f-snw])
                 sheet1.cell(row=p, column=7,value=sequence[f-snw:f])
                 sheet1.cell(row=p, column=8, value=sequence[f:g])
-                sheet1.cell(row=p, column=9, value=str(f-snw-lee)+":"+str(g))
+                sheet1.cell(row=p, column=9, value=str(f-snw-lee+self.N_count)+":"+str(g+self.N_count))
                 sheet1.cell(row=p, column=10, value=sequence.count(sequence[f-snw-lee:g]))
                 p=p+1
                 try: 
@@ -241,11 +244,11 @@
                 else:
                    continue 
              elif sequence[f-snw-lee:f-snw]!=input_element[w][0]:
-                sheet2.cell(row=q, column=6, value=sequence[f-snw-lee:f-snw])
-                sheet2.cell(row=q, column=7,value=sequence[f-snw:f])
-                sheet2.cell(row=q, column=8, value=sequence[f:g])
-                sheet2.cell(row=q, column=9, value=str(f-snw-lee)+":"+str(g))
-                sheet2.cell(row=q, column=10, value=sequence.count(sequence[f-snw-lee:g]))
+                #sheet2.cell(row=q, column=6, value=sequence[f-snw-lee:f-snw])
+                #sheet2.cell(row=q, column=7,value=sequence[f-snw:f])
+                #sheet2.cell(row=q, column=8, value=sequence[f:g])
+                #sheet2.cell(row=q, column=9, value=str(f-snw-lee)+":"+str(g))
+                #sheet2.cell(row=q, column=10, value=sequence.count(sequence[f-snw-lee:g]))
                 q=q+1
                 try: 
                    pass

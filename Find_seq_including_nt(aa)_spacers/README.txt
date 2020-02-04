@@ -6,6 +6,7 @@
 This file is the definition file for making a decision of the region including spacer sequences.
 This file makes a decision for CORDENCE, DISCORDENCE et...    #CORDENCE(front,back) or DISCORDENCE(front, expected back; expected front,back)
 the every result(CORDENCE,DISCORDENCE) is saved at xlsx file.
+default: functional sheet1(CORDENCE), Not functional sheet2(DISCORDENCE)
 
 
 
@@ -18,7 +19,7 @@ element is AGGTTG/nnn/TGAGCC
 in AGGCTG turn for AluJb-ERE
 element is AGGCTG/nnn/TGAGCC
 -------------------------------------------
---------------EXAMPLE(/Anaconda prompt)----------------------------
+--------------/EXAMPLE(Anaconda prompt)----------------------------
 
 
 //input_data_storage_file.py
@@ -40,7 +41,7 @@ count_elements=["AAAAAAAAAA","GCGCGCGCGCGCGC"]
 You must input the file pass twice.
 #"Input the file pass including the read sequence .txt or .fasta files>"  #read_file_pass
 #"Input the file pass for saving result .xlsx files>"  #result_file_pass
-example:C:\User\spSeq    NG:"C:\User\spSeq"(=without " ",' ')
+example:C:\User\spSeq    NG:"C:\User\spSeq"(thus, GOOD: without " ",' ')
 
 Every txt or fasta file in read file_pass is read, and get name ,sequence.
 --------------EXAMPLE(Anaconda prompt)--------------
@@ -48,7 +49,7 @@ C:\Users\YOSHUN MYOMOTO\Desktop\read Nucleotide Sequence\NC_000002.12 chromosome
 >NC_000002.12 Homo sapiens chromosome 2, GRCh38.p12 Primary Assembly
 
 244008146bp
------------------EXAMPLE(/Anaconda prompt)--------------------------------
+-----------------/EXAMPLE(Anaconda prompt)--------------------------------
 
 
 
